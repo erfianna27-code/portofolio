@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erfiana – Web Developer, IT Support &amp; Graphic Designer</title>
+<meta name="description" content="Portfolio of Erfiana: dashboards, corporate websites, IoT systems and design work.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%239b3a47'/%3E%3Ctext x='16' y='23' font-size='20' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* Warna aksen */
+:root{--ac:#9b3a47;--ac-soft:#fbf1f2;--ac-line:#e6c3c8;--ink:#1c1c1e;--muted:#5b5b61;--line:#ece7e7;--bg:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.7;color:var(--ink);background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+ul{padding:0;list-style:none}
+.wrap{max-width:70rem;margin:0 auto;padding:0 1.5rem}
+section{padding:4rem 0}
+h2{font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:2rem}
+h2::after{content:"";display:block;width:2.2rem;height:3px;border-radius:3px;background:var(--ac);margin-top:.5rem}
+p{color:var(--muted)}
+
+/* nav */
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:1.8rem;max-width:70rem;margin:0 auto;padding:.9rem 1.5rem;font-size:.9rem;font-weight:600}
+.logo{font-weight:800;font-size:1.5rem;text-decoration:none;margin-right:auto;letter-spacing:-.03em}
+.logo span{color:var(--ac)}
+nav a:not(.logo):not(.talk){text-decoration:none;padding:.2rem 0;border-bottom:2px solid transparent}
+nav a:not(.logo):not(.talk):hover{border-color:var(--ac);color:var(--ac)}
+.talk{background:var(--ink);color:#fff;text-decoration:none;padding:.55rem 1.3rem;border-radius:999px}
+.talk:hover{background:var(--ac)}
+
+/* hero */
+.hero{padding:4.5rem 0 3.5rem}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.hi{font-weight:600;color:var(--ink);margin-bottom:.3rem}
+h1{font-size:clamp(3rem,7.5vw,4.8rem);line-height:1.05;font-weight:800;letter-spacing:-.03em}
+.role{font-size:1.15rem;font-weight:600;color:var(--muted);margin:.6rem 0 1.2rem}
+.hero p.lead{max-width:30rem;margin-bottom:1.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-block;padding:.75rem 1.5rem;border-radius:10px;font-weight:600;font-size:.92rem;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.main{background:var(--ac);border-color:var(--ac);color:#fff}
+.btn.main:hover{background:#7f2d39;border-color:#7f2d39}
+.btn:not(.main):hover{background:var(--ink);color:#fff}
+
+/* image placeholders */
+.ph{display:grid;place-items:center;text-align:center;padding:1rem;font-size:.85rem;color:var(--muted);background:var(--ac-soft);border:2px dashed var(--ac-line);border-radius:20px}
+img.ph{border:0;object-fit:cover;width:100%;padding:0}
+.photo{aspect-ratio:4/5;width:100%;max-width:25rem;justify-self:center}
+
+/* about */
+.about{border-top:1px solid var(--line)}
+.about .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:4rem;align-items:center}
+.about .photo{max-width:20rem}
+img.photo{aspect-ratio:auto;height:auto}
+.about p+p{margin-top:.9rem}
+.traits{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.9rem 1.2rem;margin-top:1.6rem;font-weight:600;font-size:.92rem}
+.traits li{display:flex;align-items:center;gap:.6rem}
+.traits li::before{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--ac);flex:none}
+
+/* skills */
+/* skills marquee */
+.marquee{overflow:hidden;padding:.6rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-inner{display:flex;width:max-content;animation:marquee 40s linear infinite}
+.marquee:hover .marquee-inner{animation-play-state:paused}
+.group{display:flex;flex:none;gap:3.5rem;padding-right:3.5rem}
+.logo-item{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:1.05rem;color:var(--ink);white-space:nowrap;transition:color .2s}
+.logo-item b{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;color:var(--ac);transition:color .2s}
+.logo-item img{height:2rem;width:auto;transition:filter .2s,opacity .2s}
+.marquee:hover .logo-item,.marquee:hover .logo-item b{color:#6f6f77}
+.marquee:hover .logo-item img{filter:grayscale(1);opacity:.7}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* work */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));gap:1.2rem}
+.card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.card .ph{border-radius:0;border:0;border-bottom:1px solid var(--line);aspect-ratio:16/10}
+.card .body{padding:1.1rem 1.2rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.card h3{font-size:1.02rem;font-weight:700;line-height:1.3}
+.card h3 a{color:var(--ac);font-weight:600;font-size:.85rem;margin-left:.3rem}
+.card p{font-size:.88rem;line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:.2rem .9rem;font-size:.78rem;font-weight:600;margin-top:auto}
+.tags li::before{content:"•";color:var(--ac);margin-right:.35rem}
+details{border-top:1px solid var(--line);padding-top:.6rem;font-size:.85rem}
+summary{cursor:pointer;font-weight:600;color:var(--ac)}
+details dl{margin-top:.5rem;display:grid;gap:.4rem;color:var(--muted)}
+details dt{font-weight:700;color:var(--ink)}
+details dd{margin-bottom:.3rem}
+
+/* design */
+.gallery{position:relative;height:clamp(16rem,42vw,26rem);perspective:1200px;overflow:hidden;touch-action:pan-y;user-select:none;cursor:grab}
+.gallery:focus-visible{outline-offset:-3px}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:.35rem 1rem;font:inherit;font-size:.85rem;cursor:pointer}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.gallery img{position:absolute;top:50%;left:50%;height:78%;width:auto;max-width:70%;object-fit:cover;background:#fff;border-radius:14px;border:1px solid var(--line);box-shadow:0 14px 32px rgba(40,10,15,.2);cursor:pointer;-webkit-user-drag:none;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .5s;will-change:transform}
+.cf-nav{display:flex;justify-content:center;gap:.8rem;margin-top:1rem}
+.cf-btn{width:2.6rem;height:2.6rem;padding:0;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer}
+.cf-btn:hover{background:var(--ac);border-color:var(--ac);color:#fff}
+ 
+.gallery img[hidden]{display:none}
+
+/* experience */
+.xp{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem}
+.xp-top{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.xp-top::after{content:"";flex:1;border-top:2px dashed var(--ac-line)}
+.xp li:last-child .xp-top::after{display:none}
+.dot{width:3.4rem;height:3.4rem;border-radius:50%;background:var(--ac-soft);color:var(--ac);display:grid;place-items:center;font-weight:800;font-size:.95rem;flex:none}
+.when{color:var(--ac);font-weight:700;font-size:.85rem}
+.xp h3{font-size:1.05rem;font-weight:700;line-height:1.3}
+.org{color:var(--ac);font-weight:600;font-size:.88rem;margin-bottom:.4rem}
+.xp p{font-size:.88rem;line-height:1.55}
+.edu{margin-top:2.5rem;padding:1.2rem 1.4rem;background:var(--ac-soft);border-radius:14px;font-size:.92rem}
+.edu b{color:var(--ink)}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.cert{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.cert img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--ac-soft);border-bottom:1px solid var(--line);cursor:zoom-in}
+.cert .txt{padding:1rem 1.2rem}
+.cert h3{font-size:.95rem;font-weight:700;line-height:1.35}
+.cert p{font-size:.82rem;margin-top:.3rem}
+
+/* footer */
+footer{background:var(--ac);color:#fff;padding:3.5rem 0 1.5rem}
+footer :focus-visible{outline-color:#fadf86}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:2.5rem}
+.foot h2{margin-bottom:0;color:#fff;max-width:28rem}
+.foot h2::after{background:#fadf86}
+.foot h3{font-size:.95rem;font-weight:700;margin-bottom:.8rem;color:#fff}
+.foot ul{display:grid;gap:.6rem;font-size:.92rem}
+.foot a{text-decoration:none;color:#fbf1f2}
+.foot a:hover{color:#fadf86}
+.social{display:flex;gap:.7rem}
+.social a{width:2.8rem;height:2.8rem;display:grid;place-items:center;border:1px solid rgba(255,255,255,.55);border-radius:10px;font-weight:800;font-size:.85rem;background:transparent;color:#fff}
+.social a:hover{background:#fadf86;color:var(--ink);border-color:#fadf86}
+.copy{text-align:center;font-size:.82rem;color:rgba(255,255,255,.8);margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.25)}
+
+/* photo slider */
+.slider{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:var(--ac-soft)}
+.slides{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;cursor:zoom-in}
+.slides img.tall{object-fit:contain}
+.s-btn{position:absolute;top:50%;transform:translateY(-50%);width:2rem;height:2rem;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer;opacity:0;transition:opacity .2s}
+.slider:hover .s-btn,.s-btn:focus-visible{opacity:1}
+@media(hover:none){.s-btn{opacity:.9}}
+.s-prev{left:.5rem}
+.s-next{right:.5rem}
+.s-dots{position:absolute;bottom:.5rem;left:0;right:0;display:flex;justify-content:center;gap:.35rem}
+.s-dots button{width:.5rem;height:.5rem;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.75);box-shadow:0 0 0 1px rgba(0,0,0,.25);cursor:pointer}
+.s-dots button.on{background:var(--ac)}
+.slider.single .s-btn,.slider.single .s-dots{display:none}
+
+/* lightbox */
+#lightbox{border:0;padding:0;background:transparent;max-width:92vw;max-height:92vh;overflow:visible}
+#lightbox::backdrop{background:rgba(20,10,12,.85)}
+.lb-box{color:#fff;text-align:center}
+.lb-stage{position:relative}
+.lb-stage img{display:block;max-width:92vw;max-height:76vh;margin:0 auto;border-radius:10px}
+.lb-box .s-btn{opacity:1;width:2.6rem;height:2.6rem}
+.lb-cap{margin-top:.8rem;font-size:.9rem;color:#fff}
+.lb-close{position:absolute;top:-2.8rem;right:0;background:none;border:1px solid rgba(255,255,255,.65);color:#fff;border-radius:999px;padding:.3rem 1rem;font:inherit;font-size:.85rem;cursor:pointer}
+.lb-close:hover{background:#fff;color:var(--ink)}
+
+@media(max-width:48rem){
+  nav a:not(.logo):not(.talk){display:none}
+  .hero .wrap,.about .wrap,.foot{grid-template-columns:1fr}
+  .hero{padding-top:2.5rem}
+  .photo{justify-self:start;max-width:18rem}
+  .xp-top::after{display:none}
+  section{padding:3rem 0}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee{-webkit-mask-image:none;mask-image:none;padding:.6rem 1.5rem}
+  .marquee-inner{animation:none;width:auto}
+  .group{flex-wrap:wrap;row-gap:1.2rem}
+  .group[aria-hidden="true"]{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="Main">
+    <a class="logo" href="#top">ER<span>.</span></a>
+    <a href="#top">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a class="talk" href="#contact">Let’s talk</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="hi">Hi, I’m</p>
+      <h1>Erfiana</h1>
+      <p class="role">Web Developer, IT Support &amp; Graphic Designer</p>
+      <p class="lead">I build data-driven dashboards and user-friendly web applications, from database to deployment. Telecommunication Engineering graduate with hands-on experience in web development, IT support, and design.</p>
+      <div class="btns">
+        <a class="btn main" href="#work">View my work</a>
+      </div>
+    </div>
+    <img class="ph photo" src="image/foto erfiana.webp" alt="Erfiana">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <img class="ph photo" src="image/foto about me.webp">
+    <div>
+      <h2>About me</h2>
+      <p>I am a Telecommunication Engineering graduate from Politeknik Negeri Semarang (GPA 3.66/4.00). At PT JMAX Indonesia I provide technical support and troubleshooting, and I design the UI/UX, database, and API for company websites.</p>
+      <p>Beyond support work, I build web applications, including a training monitoring dashboard that tracks student progress, scores, and graduation eligibility. I enjoy turning technical problems and ideas into practical, well-designed solutions, and I am open to opportunities in IT, web development, and design.</p>
+      <ul class="traits">
+        <li>Problem solver</li><li>Detail oriented</li><li>Team player</li>
+        <li>Clear communicator</li><li>Adaptable</li><li>Time management</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap"><h2>Skills &amp; technologies</h2></div>
+  <div class="marquee" aria-label="Skills and technologies">
+    <div class="marquee-inner">
+      <ul class="group">
+        <li class="logo-item"><img src="image/js.svg" alt="">JavaScript</li>
+        <li class="logo-item"><img src="image/php.jpg" alt="">PHP</li>
+        <li class="logo-item"><img src="image/htmlcss.jpg" alt="">HTML & CSS</li>
+        <li class="logo-item"><img src="image/laravel.jpg" alt="">Laravel</li>
+        <li class="logo-item"><img src="image/directus.jpg" alt="">Directus</li>
+        <li class="logo-item"><img src="image/mysql.jpg" alt="">MySQL</li>
+        <li class="logo-item"><img src="image/supabase.jpg" alt="">Supabase</li>
+        <li class="logo-item"><img src="image/restapi.jpg" alt="">Rest API</li>
+        <li class="logo-item"><img src="image/docker.jpg" alt="">Docker</li>
+        <li class="logo-item"><img src="image/vercel.jpg" ></li>
+        <li class="logo-item"><img src="image/github.jpg" alt="">GitHub</li>
+        <li class="logo-item"><img src="image/linux.jpg" alt="">Linux </li>
+        <li class="logo-item"><img src="image/canva.jpg" alt="">Canva</li>
+        <li class="logo-item"><img src="image/iot.jpg" alt="">IoT</li>
+        <li class="logo-item"><img src="image/n.jpg" alt="">Networking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <h2>Tech projects</h2>
+    <p style="margin:-1rem 0 1.5rem">Web applications, IoT systems, and IT work I have built at PT JMAX Indonesia and during my studies.</p>
+    <div class="cards">
+
+      <article class="card">
+        <div class="slider">
+        <div class="slides">
+          <img class= "tall" src="image/dash00.png" alt="Login and program picker of the training dashboard" loading="lazy">
+          <img src="image/dash01.png" alt="Softskill dashboard with charts" loading="lazy">
+          <img src="image/dash2.png" alt="Dashboard" loading="lazy">
+          <img src="image/dash1.png" alt="Page Kelas" loading="lazy">
+          <img src="image/dash3.png" alt="Page Detail" loading="lazy">
+        </div>
+        <button class="s-btn s-prev" type="button" aria-label="Previous photo">‹</button>
+        <button class="s-btn s-next" type="button" aria-label="Next photo">›</button>
+        <div class="s-dots"></div>
+      </div>
+        <div class="body">
+          <h3>Training Program Dashboard</h3>
+          <p>Full-stack dashboard for hospitality and soft-skills training: classes, participants, scores, and graduation eligibility. Work project, 2026.</p>
+          <ul class="tags"><li>Supabase</li><li>Vercel</li></ul>
+          <details>
+            <summary>Role and impact</summary>
+            <dl>
+              <dt>Role</dt><dd>Designed, built, and deployed it independently, from database schema to production.</dd>
+              <dt>Impact</dt><dd>Replaced manual tracking with one live, structured system for programs and participants.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="slider">
+        <div class="slides">
+          <img clas="tall"  src="image/jmax1.png" alt="JMAX website home page" loading="lazy">
+          <img src="image/jmax2.png" alt="JMAX services" loading="lazy">
+          <img src="image/jmax3.png" alt="Jmax career pages" loading="lazy">
+          <img src="image/jmax4.png" alt="JMAX multilingual versions 1" loading="lazy">
+          <img src="image/jmax5.png" alt="JMAX multilingual versions 2" loading="lazy">
+        </div>
+        <button class="s-btn s-prev" type="button" aria-label="Previous photo">‹</button>
+        <button class="s-btn s-next" type="button" aria-label="Next photo">›</button>
+        <div class="s-dots"></div>
+      </div>
+        <div class="body">
+          <h3>JMAX Corporate Website <a href="https://jmaxindo.com" target="_blank" rel="noopener" aria-label="Open jmaxindo.com">Visit ↗</a></h3>
+          <p>Multilingual company site (Indonesian, English, Japanese, Chinese) with services, career listings, and contact pages, plus the company’s brand assets.</p>
+          <ul class="tags"><li>Laravel</li><li>Directus</li><li>Docker</li></ul>
+          <details>
+            <summary>Role and impact</summary>
+            <dl>
+              <dt>Role</dt><dd>Handled web development and deployment independently, and worked with internal teams on branding.</dd>
+              <dt>Impact</dt><dd>A stable platform through containerized deployment, and consistent visuals across digital and print.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="slider">
+        <div class="slides">
+          <img src="image/webpanel0.png" alt="Si Panel landing page" loading="lazy">
+          <img src="image/webpanel1.png" alt="Login="lazy">
+          <img src="image/webpanel2.png" alt="Si Panel dashboard with live metrics" loading="lazy">
+          <img src="image/webpanel3.png" alt="Si Panel data table" loading="lazy">
+          <img src="image/webpanel4.png" alt="Grafik Sensor="lazy">
+        </div>
+        <button class="s-btn s-prev" type="button" aria-label="Previous photo">‹</button>
+        <button class="s-btn s-next" type="button" aria-label="Next photo">›</button>
+        <div class="s-dots"></div>
+      </div>
+        <div class="body">
+          <h3>Si Panel: IoT Web Dashboard</h3>
+          <p>Real-time dashboard for floating solar panel sensor data at Rawa Pening, with tables, charts, and PDF/Excel export. Academic final project, 2024–2025.</p>
+          <ul class="tags"><li>PHP</li><li>MySQL</li><li>Hostinger</li></ul>
+          <details>
+            <summary>Role and impact</summary>
+            <dl>
+              <dt>Role</dt><dd>Frontend and data integration developer, in a group project: documentation, data validation, and UI.</dd>
+              <dt>Impact</dt><dd>Turned raw sensor readings into clear data and removed the need for manual checks.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="slider">
+        <div class="slides">
+          <img src="image/panel 1.png" alt="Floating solar panels at Rawa Pening" loading="lazy">
+          <img src="image/panel 2.png" alt="Control panel and inverters" loading="lazy">
+          <img class="tall" src="image/panel 3.png" alt="Sensor and electronic circuit 1" loading="lazy">
+          <img class="tall" src="image/panel 4.png" alt="Sensor and electronic circuit 2" loading="lazy">
+        </div>
+        <button class="s-btn s-prev" type="button" aria-label="Previous photo">‹</button>
+        <button class="s-btn s-next" type="button" aria-label="Next photo">›</button>
+        <div class="s-dots"></div>
+      </div>
+        <div class="body">
+          <h3>Si Panel: IoT Hardware</h3>
+          <p>Custom sensor node that collects real-time performance data from floating solar panels in the field. Academic final project, 2024–2025.</p>
+          <ul class="tags"><li>IoT</li><li>Circuit design</li><li>Calibration</li></ul>
+          <details>
+            <summary>Role and impact</summary>
+            <dl>
+              <dt>Role</dt><dd>Hardware engineer, in a group project: component selection, circuit design, calibration, and assembly.</dd>
+              <dt>Impact</dt><dd>A durable monitoring node that gathers high-accuracy data directly from the field.</dd>
+            </dl>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN -->
+<section id="design">
+  <div class="wrap">
+    <h2>Design work</h2>
+    <p style="margin:-1rem 0 1.5rem">A selection of design work created at PT JMAX Indonesia and Metro TV.</p>
+    <div class="filters" role="group" aria-label="Filter design work">
+      <button type="button" class="chip on" data-f="all">All</button>
+      <button type="button" class="chip" data-f="metro">Metro TV</button>
+      <button type="button" class="chip" data-f="jmax">PT JMAX</button>
+    </div>
+    <div class="gallery">
+      <img data-cat="metro" data-featured src="image/metro1.png" alt="Metro TV social media design" loading="lazy">
+      <img data-cat="metro" data-featured src="image/metro2.png" alt="Metro TV design" loading="lazy">
+      <img data-cat="metro" data-featured src="image/metro3.png" alt="Metro TV design" loading="lazy">
+      <img data-cat="metro" data-featured src="image/metro4.png" alt="Metro TV design" loading="lazy">
+      <img data-cat="jmax"  data-featured src="image/kartu.png" alt="JMAX business card" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/nama.png" alt="JMAX design" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/cal1.png" alt="JMAX 2026 post" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/cal2.png" alt="JMAX design" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/cal3.png" alt="JMAX design" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/cal4.png" alt="JMAX design" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/Kal1.png" alt="JMAX 2026 calendar" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/Kal2.png" alt="JMAX calendar" loading="lazy">
+      <img data-cat="jmax" data-featured src="image/instagram.jpeg" alt="JMAX Instagram content" loading="lazy">
+    </div>
+    <div class="cf-nav">
+      <button type="button" class="cf-btn" id="cfPrev" aria-label="Previous design">‹</button>
+      <button type="button" class="cf-btn" id="cfNext" aria-label="Next design">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <ul class="xp">
+      <li>
+        <div class="xp-top"><span class="dot">JM</span></div>
+        <p class="when">Nov 2025 – Present</p>
+        <h3>IT Support &amp; Graphic Designer</h3>
+        <p class="org">PT JMAX Indonesia</p>
+        <p>IT support across internal teams, UI/UX, database and API design for company websites, a training monitoring dashboard, and design and Instagram management.</p>
+      </li>
+      <li>
+        <div class="xp-top"><span class="dot">MT</span></div>
+        <p class="when">Feb 2024 – Jul 2024</p>
+        <h3>Video Editor Intern</h3>
+        <p class="org">Metro TV</p>
+        <p>Set up live streaming for the Newsline program on TikTok and Facebook, and edited 20+ video clips per week.</p>
+      </li>
+      <li>
+        <div class="xp-top"><span class="dot">PT</span></div>
+        <p class="when">Nov 2022 – Aug 2023</p>
+        <h3>Creative Division &amp; Crew</h3>
+        <p class="org">Polines TV</p>
+        <p>Developed concepts and scripts for programs and podcasts, and ran vMix live streaming at the 2023 graduation ceremony.</p>
+      </li>
+    </ul>
+
+    <div class="edu">
+      <b>Education:</b> Semarang State Polytechnic, Bachelor’s degree in Telecommunication Engineering, Aug 2021 – Aug 2025 (GPA 3.66/4.00).
+      <p> Final project: IoT monitoring of floating solar panel performance in Rawa Pening.</p>
+    </div>
+
+    <ul class="certs">
+      <li class="cert">
+        <img src="image/sertif1.png" alt="CCNA:certificate 1" loading="lazy">
+        <div class="txt">
+          <h3>CCNA: Enterprise Networking, Security, and Automation</h3>
+          <p>Cisco Networking Academy · 12 Nov 2024</p>
+        </div>
+      </li>
+
+      <li class="cert">
+        <img src="image/sertif 3.png" alt="CCNA:certificate 2" loading="lazy">
+        <div class="txt">
+          <h3>CCNAv7: Switching, Routing, and Wireless Essentials</h3>
+          <p>Cisco Networking Academy · 31 Dec 2023</p>
+        </div>
+      </li>
+
+      <li class="cert">
+        <img src="image/sertif 2.png" alt="Metro certificate" loading="lazy">
+        <div class="txt">
+          <h3>Internship certificate, Digital Hub &amp; Social Media</h3>
+          <p>Metro TV · Feb – Jul 2024 · Result: Good</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <h2>Let’s build something meaningful together.</h2>
+      <div>
+        <h3>Let’s connect</h3>
+        <div class="social">
+          <a href="https://github.com/erfianna27-code" target="_blank" rel="noopener" aria-label="GitHub">Gh</a> 
+          <a href="https://www.linkedin.com/in/erfiana" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="mailto:erfiana6803@gmail.com" aria-label="Email">@</a>
+        </div>
+      </div>
+    </div>
+    <p class="copy">© 2026 Erfiana. All rights reserved.</p>
+  </div>
+</footer>
+
+<dialog id="lightbox" aria-label="Photo viewer">
+  <div class="lb-box">
+    <button class="lb-close" type="button">Close</button>
+    <div class="lb-stage">
+      <img src="" alt="">
+      <button class="s-btn s-prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="s-btn s-next" type="button" aria-label="Next photo">›</button>
+    </div>
+    <p class="lb-cap"></p>
+  </div>
+</dialog>
+
+<script>
+document.querySelectorAll('.marquee-inner').forEach(function(inner){
+  var g=inner.querySelector('.group'),c=g.cloneNode(true);
+  c.setAttribute('aria-hidden','true');inner.appendChild(c);
+});
+</script>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox');
+  var lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.lb-cap');
+  var smooth=matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth';
+  var cur={imgs:[],i:0,title:''};
+
+  function show(){
+    var im=cur.imgs[cur.i];
+    lbImg.src=im.currentSrc||im.src;
+    lbImg.alt=im.alt;
+    lbCap.textContent=cur.title+' ('+(cur.i+1)+' / '+cur.imgs.length+')';
+  }
+  function step(d){cur.i=(cur.i+d+cur.imgs.length)%cur.imgs.length;show()}
+
+  lb.querySelector('.s-prev').onclick=function(){step(-1)};
+  lb.querySelector('.s-next').onclick=function(){step(1)};
+  lb.querySelector('.lb-close').onclick=function(){lb.close()};
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  lb.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft')step(-1);
+    if(e.key==='ArrowRight')step(1);
+  });
+
+  document.querySelectorAll('.slider').forEach(function(sl){
+    var track=sl.querySelector('.slides'),imgs=[].slice.call(track.children),dots=sl.querySelector('.s-dots');
+    var card=sl.closest('.card'),h=card&&card.querySelector('h3');
+    var title=h?h.firstChild.textContent.trim():'';
+    if(imgs.length<2)sl.classList.add('single');
+
+    function idx(){return Math.round(track.scrollLeft/track.clientWidth)}
+    function go(k){track.scrollTo({left:k*track.clientWidth,behavior:smooth})}
+    function mark(){
+      var k=idx();
+      [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===k)});
+    }
+
+    imgs.forEach(function(img,k){
+      var d=document.createElement('button');
+      d.type='button';d.setAttribute('aria-label','Photo '+(k+1));
+      d.onclick=function(){go(k)};
+      dots.appendChild(d);
+      function openIt(){cur={imgs:imgs,i:k,title:title};show();lb.showModal()}
+      img.tabIndex=0;
+      img.onclick=openIt;
+      img.onkeydown=function(e){if(e.key==='Enter')openIt()};
+    });
+
+    sl.querySelector('.s-prev').onclick=function(){go((idx()-1+imgs.length)%imgs.length)};
+    sl.querySelector('.s-next').onclick=function(){go((idx()+1)%imgs.length)};
+    track.addEventListener('scroll',mark,{passive:true});
+    mark();
+  });
+
+    var gal=document.querySelector('.gallery');
+  if(gal){
+    var all=[].slice.call(gal.querySelectorAll('img'));
+    var chips=document.querySelectorAll('.chip');
+    var vis=[],act=0,moved=false,startX=null;
+    gal.tabIndex=0;
+    gal.setAttribute('role','region');
+    gal.setAttribute('aria-label','Design work carousel');
+
+    function layout(){
+      var w=gal.clientWidth,sp=Math.min(w*0.17,190);
+      vis.forEach(function(im,k){
+        var off=k-act,a=Math.abs(off),sg=off<0?-1:1;
+        var tx=off===0?0:sg*(sp*1.5+(a-1)*sp*.55);
+        var ry=off===0?0:-sg*50;
+        im.style.transform='translate(-50%,-50%) translateX('+tx+'px) translateZ('+(-a*110)+'px) rotateY('+ry+'deg)';
+        im.style.zIndex=100-a;
+        im.style.opacity=a>3?0:1-a*.15;
+        im.style.pointerEvents=a>3?'none':'auto';
+        im.setAttribute('aria-current',off===0?'true':'false');
+      });
+    }
+
+    var certImgs=[].slice.call(document.querySelectorAll('.cert img'));
+    certImgs.forEach(function(im,k){
+      function openIt(){cur={imgs:certImgs,i:k,title:'Certification'};show();lb.showModal()}
+      im.tabIndex=0;
+      im.onclick=openIt;
+      im.onkeydown=function(e){if(e.key==='Enter')openIt()};
+    });
+
+    function go(k){act=Math.max(0,Math.min(vis.length-1,k));layout()}
+
+    all.forEach(function(im){
+      function openIt(){
+        cur={imgs:vis,i:vis.indexOf(im),title:'Design work'};
+        show();lb.showModal();
+      }
+      function pick(){if(vis[act]===im)openIt();else go(vis.indexOf(im))}
+      im.draggable=false;
+      im.tabIndex=0;
+      im.onclick=function(){if(moved){moved=false;return}pick()};
+      im.onkeydown=function(e){if(e.key==='Enter')pick()};
+    });
+
+    gal.addEventListener('pointerdown',function(e){startX=e.clientX;moved=false;gal.style.cursor='grabbing'});
+    gal.addEventListener('pointermove',function(e){
+      if(startX===null)return;
+      var dx=e.clientX-startX;
+      if(Math.abs(dx)>50){moved=true;go(act+(dx<0?1:-1));startX=e.clientX}
+    });
+    window.addEventListener('pointerup',function(){startX=null;gal.style.cursor='grab'});
+    gal.addEventListener('keydown',function(e){
+      if(e.key==='ArrowLeft'){e.preventDefault();go(act-1)}
+      if(e.key==='ArrowRight'){e.preventDefault();go(act+1)}
+    });
+    document.getElementById('cfPrev').onclick=function(){go(act-1)};
+    document.getElementById('cfNext').onclick=function(){go(act+1)};
+    window.addEventListener('resize',layout);
+
+    function apply(f){
+      all.forEach(function(im){
+        im.hidden=!(f==='all'?im.hasAttribute('data-featured'):im.dataset.cat===f);
+      });
+      chips.forEach(function(x){x.classList.toggle('on',x.dataset.f===f)});
+      vis=all.filter(function(x){return !x.hidden});
+      act=Math.floor((vis.length-1)/2);
+      layout();
+    }
+    chips.forEach(function(c){c.onclick=function(){apply(c.dataset.f)}});
+    apply('all');
+  }
+})();
+</script>
+</body>
+</html>
